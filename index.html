@@ -451,7 +451,7 @@
 
   .section-sub {
     font-size: 17px;
-    color: var(--text-3);
+    color: black;
     font-weight: 300;
     max-width: 520px;
     line-height: 1.6;
@@ -468,7 +468,7 @@
   }
 
   .service-card {
-    background: var(--bg-card);
+    background: white;
     backdrop-filter: var(--blur);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -483,7 +483,6 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--pink), transparent);
     opacity: 0;
     transition: opacity 0.3s;
   }
@@ -520,7 +519,7 @@
 
   .service-card .desc {
     font-size: 14px;
-    color: var(--text-3);
+    color: black;
     line-height: 1.65;
     font-weight: 300;
     margin-bottom: 24px;
@@ -683,7 +682,7 @@
   }
 
   .value-card {
-    background: var(--bg-card);
+    background: white;
     backdrop-filter: var(--blur);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -715,7 +714,7 @@
 
   .value-card p {
     font-size: 14px;
-    color: var(--text-3);
+    color: black;
     line-height: 1.65;
     font-weight: 300;
   }
@@ -819,11 +818,83 @@
 
   .btn-outline-white:hover { background: rgba(255,255,255,0.2); transform: scale(1.02); }
 
+  .about-card-big {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72%;
+    height: 72%;
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: 0;
+}
+
+.about-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity .9s ease;
+}
+
+.about-slide.active {
+    opacity: 1;
+}
+
+.about-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,.45) 0%,
+        rgba(0,0,0,.05) 50%,
+        transparent 100%
+    );
+}
+
+.about-slide-footer {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.about-slide-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.about-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.45);
+}
+
+.about-dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+.about-slide-label {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
   /* ─── FOOTER ─── */
   footer {
+    background-color: white;
     border-top: 1px solid var(--border);
     padding: 48px 24px;
-    max-width: 1100px;
+    /*max-width: 1100px;*/
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -860,7 +931,7 @@
 
   .footer-links a {
     font-size: 13px;
-    color: var(--text-3);
+    color: black;
     text-decoration: none;
     font-weight: 300;
     transition: color 0.2s;
@@ -965,6 +1036,143 @@
   text-transform: uppercase;
 }
 
+/* ─── CONTACT ─── */
+  #contact {
+    border-top: 1px solid var(--border);
+    max-width: 1100px;
+  }
+
+  /* ─── FUSED CTA + CONTACT ─── */
+  .cta-banner {
+    background: var(--pink);
+    padding: 56px 64px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    top: -200px; right: -100px;
+    pointer-events: none;
+  }
+
+  .cta-banner::after {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    bottom: -100px; left: 100px;
+    pointer-events: none;
+  }
+
+  .cta-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+  }
+
+  .cta-body form {
+    padding: 40px 44px;
+    border-right: 1px solid var(--border);
+  }
+
+  .form-group { margin-bottom: 14px; }
+
+  .form-control {
+    width: 100%;
+    padding: 13px 16px;
+    font-size: 14.5px;
+    font-family: inherit;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: none;
+  }
+
+  .form-control::placeholder { color: var(--text-3); }
+
+  .form-control:focus {
+    border-color: var(--border-pink);
+    box-shadow: 0 0 0 3px var(--pink-dim);
+    background: white;
+  }
+
+  .contact-info {
+    padding: 40px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contact-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 26px;
+  }
+
+  .contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .contact-info-item:last-child { margin-bottom: 0; }
+
+  .contact-info-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--pink-dim);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pink);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .contact-info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .contact-info-text strong {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .contact-info-text span {
+    font-size: 13.5px;
+    color: var(--text-2);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 720px) {
+    .cta-banner { padding: 40px 28px; }
+    .cta-body { grid-template-columns: 1fr; }
+    .cta-body form { border-right: none; border-bottom: 1px solid var(--border); padding: 32px 28px; }
+    .contact-info { padding: 32px 28px; }
+  }
+
+
+
 @keyframes float-left {
   from { transform: translateX(-105%) rotate(-4deg) translateY(0px); }
   to   { transform: translateX(-105%) rotate(-2.5deg) translateY(-8px); }
@@ -1003,25 +1211,25 @@
 
   <div class="hero-inner">
 
-    <!-- LEFT: Logo -->
-    <div class="hero-left">
-      <img src="images/Nyawo Company Logo-No Background.png" alt="Nyawo Group Logo">
+  <!-- LEFT: Text -->
+  <div class="hero-right">
+    <h1>Building<br><em>Infrastructure</em><br>that Connects</h1>
+    <p class="hero-sub">From roads and civil works to fibre optics and 5G networks — Nyawo Group delivers end-to-end construction and telecommunications solutions across South Africa.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">
+        Explore Services
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#about" class="btn-ghost">About Us</a>
     </div>
-
-    <!-- RIGHT: Text -->
-    <div class="hero-right">
-      <h1>Building<br><em>Infrastructure</em><br>that Connects</h1>
-      <p class="hero-sub">From roads and civil works to fibre optics and 5G networks — Nyawo Group delivers end-to-end construction and telecommunications solutions across South Africa.</p>
-      <div class="hero-actions">
-        <a href="#services" class="btn-primary">
-          Explore Services
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#about" class="btn-ghost">About Us</a>
-      </div>
-    </div>
-
   </div>
+
+  <!-- RIGHT: Logo -->
+  <div class="hero-left">
+    <img src="images/Nyawo Company Logo-No Background.png" alt="Nyawo Group Logo">
+  </div>
+
+</div>
 
   <div class="hero-photos">
     <div class="hero-photo hero-photo-1">
@@ -1090,12 +1298,28 @@
   <div class="about-grid">
     <div class="about-visual">
       <div class="about-card-big">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,5,154,0.06) 0%,rgba(123,47,247,0.04) 100%);"></div>
-        <div class="about-card-big-inner">
-          <p>CIDB Certified</p>
-          <h4>Grade 2CE 1EP — Building & Civil Infrastructure</h4>
+
+    <div class="about-slide active" style="background-image:url('images/1.JPG');"></div>
+    <div class="about-slide" style="background-image:url('images/2.JPG');"></div>
+    <div class="about-slide" style="background-image:url('images/3.JPG');"></div>
+    <div class="about-slide" style="background-image:url('images/4.JPG');"></div>
+
+    <div class="about-slide-overlay"></div>
+
+    <div class="about-slide-footer">
+        <div class="about-slide-dots">
+            <span class="about-dot active"></span>
+            <span class="about-dot"></span>
+            <span class="about-dot"></span>
+            <span class="about-dot"></span>
         </div>
-      </div>
+
+        <div class="about-slide-label">
+            Nyawo Company Projects
+        </div>
+    </div>
+
+</div>
       <div class="about-card-sm">
         <p style="font-size:11.5px;color:var(--text-3);font-weight:500;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Company Highlights</p>
         <div class="about-card-sm-row">
@@ -1115,7 +1339,17 @@
       </div>
     </div>
 
-    <div class="about-content">
+    <div class="about-content" style="
+      background: white;
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 22px;
+      padding: 28px 32px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+      margin-top: 28px;
+      margin-bottom: 28px;
+    ">
       <div class="eyebrow">About Us</div>
       <h2 class="section-title" style="margin-bottom:20px;">Built on<br><em>Expertise</em> &amp;<br>Integrity</h2>
       <p>Nyawo Group is a proudly South African multi-disciplinary company operating at the intersection of construction and telecommunications. With roots going back to 2015, we have grown from a single civil works contractor into a full-service infrastructure group.</p>
@@ -1174,17 +1408,61 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- CONTACT -->
 <div class="cta-section" id="contact">
-  <div class="cta-inner">
-    <div class="cta-text">
-      <h2>Ready to start<br>your <em>next project</em>?</h2>
-      <p>Let's talk about how Nyawo Group can deliver the construction or telecoms solution your project needs.</p>
+  <div class="cta-inner" style="flex-direction:column;align-items:stretch;padding:0;overflow:hidden;">
+    
+    <!-- Pink header banner -->
+    <div class="cta-banner">
+      <div class="cta-text">
+        <h2>Ready to start<br>your <em>next project</em>?</h2>
+        <p>Let's talk about how Nyawo Group can deliver the construction or telecoms solution your project needs.</p>
+      </div>
     </div>
-    <div class="cta-actions">
-      <a href="mailto:info@nyawogroup.co.za" class="btn-white">Contact Us Today</a>
-      <a href="#services" class="btn-outline-white">View Our Services</a>
+
+    <!-- Form + contact info -->
+    <div class="cta-body">
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <input type="hidden" name="access_key" value="acd1288a-f84f-4bd5-a7c7-eda2d880fb0d">
+        <input type="hidden" name="subject" value="New Contact Form Submission – Nyawo Group Holdings">
+        <input type="hidden" name="from_name" value="Nyawo Group Website">
+        <input type="text" name="_honey" style="display:none;" tabindex="-1" autocomplete="off">
+        <div class="form-group">
+          <input class="form-control" name="name" placeholder="Your Name" type="text" required>
+        </div>
+        <div class="form-group">
+          <input class="form-control" name="email" placeholder="Email Address" type="email" required>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" id="submitBtn" style="width:100%;justify-content:center;border:none;cursor:pointer;font-family:inherit;">Send Message</button>
+        <p id="formStatus" style="margin-top:14px;font-size:0.88rem;text-align:center;display:none;"></p>
+      </form>
+
+      <div class="contact-info">
+        <h4>Reach us directly</h4>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-info-text"><strong>Address</strong><span>14 Aureole Ave, Northgate, Johannesburg, 2188, South Africa</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <div class="contact-info-text"><strong>Email</strong><span>info@nyawogroup.co.za</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-info-text"><strong>Phone</strong><span>+27 10 017 7645</span></div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
 
@@ -1192,8 +1470,7 @@
 <footer>
   <div>
     <a href="#" class="footer-logo">
-      <div class="logo-mark"><span>N</span></div>
-      <span class="nav-wordmark">Nyawo Group</span>
+      <span class="nav-wordmark">Nyawo Company</span>
     </a>
     <p class="footer-tagline">Building Infrastructure. Connecting South Africa.</p>
   </div>
@@ -1205,6 +1482,59 @@
   </ul>
   <p class="footer-copy">© 2026 Nyawo Group. All rights reserved.</p>
 </footer>
+
+<script>
+  async function submitForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    status.style.display = 'none';
+
+    const data = Object.fromEntries(new FormData(e.target));
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+      if (json.success) {
+        status.textContent = '✓ Message sent! We\'ll be in touch shortly.';
+        status.style.color = '#16a34a';
+        e.target.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Please email us directly.';
+      status.style.color = '#dc2626';
+    }
+    status.style.display = 'block';
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+  }
+</script>
+
+<script>
+const aboutSlides = document.querySelectorAll('.about-slide');
+const aboutDots = document.querySelectorAll('.about-dot');
+
+let aboutIndex = 0;
+
+setInterval(() => {
+
+    aboutSlides[aboutIndex].classList.remove('active');
+    aboutDots[aboutIndex].classList.remove('active');
+
+    aboutIndex = (aboutIndex + 1) % aboutSlides.length;
+
+    aboutSlides[aboutIndex].classList.add('active');
+    aboutDots[aboutIndex].classList.add('active');
+
+}, 4000);
+</script>
 
 </body>
 </html>
